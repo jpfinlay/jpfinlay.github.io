@@ -12,7 +12,7 @@ So what are we pointing at?
 
 Well, in Ruby, everything is an object right? So, a string or an integer — both objects. An array or a hash, also objects. An object in Ruby has a unique identifier and we can find an object’s identifier by calling the #object_id method on it.
 
-```
+```ruby
 a = 21
 a.object_id
 43
@@ -20,7 +20,7 @@ a.object_id
 
 What’s just happened is that we just pointed the variable a to the integer 21. Internally, Ruby stores 21 in memory and assigns the unique identifier 43 to it. Now, what happens when we assign a new variable, b, to a?
 
-```
+```ruby
 b = a
 b.object_id
 43
@@ -28,7 +28,7 @@ b.object_id
 
 Yup, the variable ‘b’ simply points to the same object as variable ‘a’. So what happens if we change ‘a’? To find out, let’s assign ‘a’ to a new string:
 
-```
+```ruby
 a = “Hello”
 => "Hello"
 a.object_id
@@ -45,7 +45,7 @@ In the above snippet, we reassign the variable ‘a’ to a new object — t
 
 Now, the above may appear a little laboured. Why is this so significant? Well, consider the following ruby program and have a think as to what is output by the program as it stands.
 
-```
+```ruby
 def greeting(param)
   param + " you!"
 end
@@ -66,7 +66,7 @@ What happens when we do mutate the object?
 
 Well, this is where the fun starts and also why methods that mutate objects, by convention, are usually appended with an exclamation point ‘!’. Consider the same program as above, except now we use the “shovel operator” (<<) to mutate the object:
 
-```
+```ruby
 def greeting(param)
   param << " you!"
 end
@@ -83,7 +83,7 @@ As you will no doubt now expect, the output will be “Hello you!” because the
 
 When we pass a parameter into a method a new local variable is created, but we don’t necessarily do anything with that new variable. Consider the code below:
 
-```
+```ruby
 def greeting(param)
   param += " you!"
 end
@@ -96,7 +96,7 @@ p say_hello
 
 What’s happening here is the variable ‘param’ is first pointed at the object “Hello” but is then reassigned by the += operator. We are effectively doing this:
 
-```
+```ruby
 param = param + “ you!”
 ```
 
@@ -104,13 +104,13 @@ _This is simple variable reassignment._
 
 As you will have guessed by now, the output from the program will be “Hello”. This is because inside the method, although we create a new variable ‘param’ and point it at “Hello” and then reassign that variable using the += method, we do not return ‘param’ at the end of the method or mutate the original object. The program simply outputs the original object — the string “Hello”, thanks to the line:
 
-```
+```ruby
 p say_hello
 ```
 
 To see what is going on with the above code as it is executed, we can simply print out ‘param’ at each stage in the method:
 
-```
+```ruby
 def greeting(param)
   p param
   param += " you!"
@@ -125,7 +125,7 @@ p say_hello
 
 When the above program runs, the output is:
 
-```
+```ruby
 "Hello"
 "Hello you!"
 "Hello"
@@ -134,7 +134,3 @@ When the above program runs, the output is:
 The first “Hello” comes from printing ‘param’ the first time. ‘param’ is then reassigned to “Hello you!” and we print this out. The method then exits and, effectively ‘param’ disappears and the last action our program takes is to print ‘say_hello’, which produces the last “Hello” — ‘say_hello’ was never mutated.
 
 Thanks for reading. I hope this helps clarify how variables work as pointers to objects and how, sometimes, we need to be careful about what we do inside methods with those variables.
-
-
-
-
