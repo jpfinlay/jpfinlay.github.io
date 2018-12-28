@@ -32,8 +32,8 @@ $viewport-medium: 48em;
 $viewport-large: 64em;
 
 // Colors
-$ruby_red: #7A0904 !default;
-$blood_red: #C7221B !default;
+$ruby-red: #7A0904 !default;
+$blood-red: #C7221B !default;
 $ochre: #818712 !default;
 $teal: #0A2B47 !default;
 $sky_blue: #1173C7 !default;
@@ -60,8 +60,8 @@ $darken-3: rgba(#000,.25) !default;
 $darken-4: rgba(#000,.5) !default;
 
 // Links
-$link-color: $blue;
-$link-hover-color: darken($blue, 40%);
+$link-color: $blood-red;
+$link-hover-color: darken($blood-red, 40%);
 
 // Breakpoints
 $breakpoint-md: '(min-width: 52em)';
